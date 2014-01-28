@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.HashSet;
 
+//Desenvolvido por Carlos Alberto Mota da Silva Filho")
+//"Versão: 1.0"
+//"github:CarlosMota"
 
 public class Estado {
 	

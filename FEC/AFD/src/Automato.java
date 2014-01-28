@@ -2,15 +2,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
+//Desenvolvido por Carlos Alberto Mota da Silva Filho")
+//"Versão: 1.0"
+//"github:CarlosMota"
+
 
 public class Automato {
 	
-//	private final int MAX_VERTS = 20;
-//	private Estado listaEstados[];
-//	private String adjMat[][];
-//	private int nEstados;
-//	private String sortedArray[];
-	//private ArrayList<Transicao> transicoes;
+
 	private Estado estadoAtual;
 	private ArrayList<Estado> estados;
 	private static int contador;
@@ -19,15 +18,7 @@ public class Automato {
 	
 	public Automato(){
 		estados = new ArrayList<>();
-		//transicoes = new ArrayList<>();
-//		listaEstados = new Estado[MAX_VERTS];
-//		adjMat = new String[MAX_VERTS][MAX_VERTS];
-//		nEstados = 0;
-//		for (int i = 0; i < MAX_VERTS; i++) {
-//			for (int j = 0; j < MAX_VERTS; j++) {
-//				adjMat[i][j] = ""+-1;
-//			}
-//		}
+		alfabeto = new ArrayList<>();
 	}
 	
 	public boolean addEstado(boolean estadoInicial, boolean estadoFinal){
@@ -58,7 +49,7 @@ public class Automato {
 	}
 	
 	public void funcaoTransicao(ArrayList<Estado> estados, String entrada){
-		int contador = 1;
+		int cont = 0;
 		for (Estado estado : estados) {
 			if(estado.isEstadoInicial()==true){
 				estadoAtual = estado;
@@ -66,13 +57,13 @@ public class Automato {
 			}
 		}
 		for(int i = 0; i < entrada.length(); i++){
-			contador++;
+			cont++;
 			if(verificarTransicao(estadoAtual, ""+entrada.charAt(i)) == false){
 				break;
 			}
 		}
 		
-		if(contador >= estados.size() && verificarAceitacao(estadoAtual)){
+		if(cont == entrada.length() && verificarAceitacao(estadoAtual)){
 			Display.mensagem(true);
 		}else{
 			Display.mensagem(false);
@@ -99,6 +90,31 @@ public class Automato {
 			aceita = true;
 		}
 		return aceita;
+	}
+	
+	public Estado procuraEstado(String label){
+		Estado estado = null;
+		for (Estado est : estados) {
+			if(est.getLabel().equals(label)){
+				estado = est;
+			}
+		}
+		return estado;
+	}
+	public Estado getEstadoAtual() {
+		return estadoAtual;
+	}
+
+	public ArrayList<Estado> getEstados() {
+		return estados;
+	}
+
+	public boolean isEstadoInicialExiste() {
+		return estadoInicialExiste;
+	}
+
+	public ArrayList<String> getAlfabeto() {
+		return alfabeto;
 	}
 	
 	

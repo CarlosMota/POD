@@ -1,6 +1,10 @@
 
 public class Transicao {
 	
+	//Desenvolvido por Carlos Alberto Mota da Silva Filho")
+	//"Versão: 1.0"
+	//"github:CarlosMota"
+	
 	private Estado origem,destino;
 	private String simbolo;
 	
